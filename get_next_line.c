@@ -6,43 +6,96 @@
 /*   By: alde-abre <alde-abre@42student.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:22:04 by alde-abre         #+#    #+#             */
-/*   Updated: 2024/11/25 19:19:30 by alde-abre        ###   ########.fr       */
+/*   Updated: 2024/11/28 16:42:01 by alde-abre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "get_next_line.h"
 
+char	*freebuff(char *buff, char *temp)
+{
+	char	*cpy;
+
+	cpy = buff;
+	buff = ft_strjoin(cpy, temp);
+	free(cpy);
+	return (buff);
+}
+
+char	*get_line(char *buff, char **line)
+{
+	char	*cpy;
+	int		i;
+
+	i = -1;
+	cpy = buff;
+	if (!buff)
+	{
+		*line = NULL;
+		return (NULL);
+	}
+	while (buff[++i])
+		if (buff[i] == '\n')
+			break ;
+	*line = ft_substr(cpy, 0, i + 1);
+	buff = ft_substr(cpy, i + 1, ft_strlen(cpy) - i + 1);
+	free(cpy);
+	return (buff);
+}
+
 char	*read_line(int fd, char *buff)
 {
-	char *	temp;
-	int	bytes;
+	char	*temp;
+	int		bytes;
 
-	temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char *));
+	if (!buff)
+		buff = ft_calloc(1, 1);
+	temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!temp)
 		return (NULL);
+	if (ft_strchr(buff, '\n'))
+		return (buff);
 	bytes = read(fd, temp, BUFFER_SIZE);
-	printf ("content : %s, bytes readed : %i\n", temp, bytes);
-	buff = ft_strjoin(buff, temp);
+	while (bytes > 0)
+	{
+		buff = freebuff(buff, temp);
+		if (ft_strchr(temp, '\n') || !temp || bytes < BUFFER_SIZE)
+			break ;
+		bytes = read(fd, temp, BUFFER_SIZE);
+	}
+	if (bytes == 0)
+	{
+		free(buff);
+		buff = NULL;
+	}
+	free(temp);
 	return (buff);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buff;
+	char		*line;
 
 	if (fd < 3 || BUFFER_SIZE == 0)
 		return (NULL);
 	buff = read_line(fd, buff);
-	if (!buff)
-		return (NULL);
-	return (buff);
+	buff = get_line(buff, &line);
+	return (line);
 }
 
-int	main()
-{
-	int fd = open("test", O_RDONLY);
-	get_next_line(fd);
+// int	main()
+// {
+// 	int fd = open("test", O_RDONLY);
 
-	return 0;
-}
+// 	char * temp;
+// 	temp = get_next_line(fd);
+// 	for (int k = 0; k < 20 && temp; k++) {
+// 		printf("-%s", temp);
+// 		free(temp);
+// 		temp = get_next_line(fd);
+// 	}
+// 	close(fd);
+// 	return 0;
+// }

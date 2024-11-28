@@ -6,7 +6,7 @@
 #    By: alde-abre <alde-abre@42student.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 16:18:59 by alde-abre         #+#    #+#              #
-#    Updated: 2024/11/25 18:58:35 by alde-abre        ###   ########.fr        #
+#    Updated: 2024/11/28 16:52:27 by alde-abre        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 #Def du chemin d'acces des fichiers sources
-SRC = $(wildcard *.c)
+SRC = get_next_line.c get_next_line_utils.c
 
 #Création des fichiers .o
 OBJ = $(SRC:.c=.o)
