@@ -6,13 +6,13 @@
 /*   By: alde-abre <alde-abre@42student.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:22:19 by alde-abre         #+#    #+#             */
-/*   Updated: 2024/11/28 16:55:05 by alde-abre        ###   ########.fr       */
+/*   Updated: 2024/11/28 17:36:51 by alde-abre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 2
 
 # include <fcntl.h>
 # include <unistd.h>

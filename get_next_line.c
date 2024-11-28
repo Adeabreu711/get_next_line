@@ -6,7 +6,7 @@
 /*   By: alde-abre <alde-abre@42student.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:22:04 by alde-abre         #+#    #+#             */
-/*   Updated: 2024/11/28 16:42:01 by alde-abre        ###   ########.fr       */
+/*   Updated: 2024/11/28 17:37:26 by alde-abre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,21 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int	main()
-// {
-// 	int fd = open("test", O_RDONLY);
+int	main(int argc, char *argv[])
+{
+	int		fd;
+	char	*temp;
 
-// 	char * temp;
-// 	temp = get_next_line(fd);
-// 	for (int k = 0; k < 20 && temp; k++) {
-// 		printf("-%s", temp);
-// 		free(temp);
-// 		temp = get_next_line(fd);
-// 	}
-// 	close(fd);
-// 	return 0;
-// }
+	if (argc != 2)
+		return (0);
+	fd = open(argv[1], O_RDONLY);
+	temp = get_next_line(fd);
+	while (temp)
+	{
+		printf("-%s", temp);
+		free(temp);
+		temp = get_next_line(fd);
+	}
+	close(fd);
+	return (0);
+}
