@@ -6,7 +6,7 @@
 /*   By: alde-abre <alde-abre@42student.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:22:19 by alde-abre         #+#    #+#             */
-/*   Updated: 2024/11/28 18:05:06 by alde-abre        ###   ########.fr       */
+/*   Updated: 2024/11/30 01:17:40 by alde-abre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 
-char	*freebuff(char *buff, char *temp);
+char	*join_cpy(char *buff, char *temp);
 char	*cut_line(char *buff, char **line);
 char	*read_line(int fd, char *buff);
 char	*get_next_line(int fd);
