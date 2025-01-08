@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alde-abre <alde-abre@42student.fr>         +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:23:56 by alde-abre         #+#    #+#             */
-/*   Updated: 2024/11/30 01:10:54 by alde-abre        ###   ########.fr       */
+/*   Updated: 2025/01/08 14:13:14 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
